@@ -1,0 +1,16 @@
+__pycache__
+*.pyc
+*.log
+*.mo
+/media
+*prod.py
+*local.py
+/static
+tmp
+.DS_Store
+._.DS_Store
+*.DS_Store
+.ideia/
+.idea
+._*
+django.log
