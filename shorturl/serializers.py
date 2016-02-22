@@ -1,7 +1,5 @@
-from rest_framework import serializers, viewsets
-from rest_framework.relations import PrimaryKeyRelatedField
-
-from encurtar.models import User, Url
+from rest_framework import serializers
+from shorturl.models import User, Url
 
 class UrlSerializer(serializers.HyperlinkedModelSerializer):
 
