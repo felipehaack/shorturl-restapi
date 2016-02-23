@@ -9,7 +9,7 @@ RUN apt-get update -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y git supervisor python-dev python-pip nginx python3-dev libxml2-dev libxslt1-dev libgeos-dev libncurses5-dev gettext
 
 #Project
-RUN git clone https://$GIT_USERNAME:$GIT_PASSWORD@$GIT_REPOSITORY --progress --verbose
+RUN git clone https://${GIT_USERNAME}:${GIT_PASSWORD}@${GIT_REPOSITORY} --progress --verbose
 RUN cd chaordic-restapi; pip install -r requirements.txt
 RUN mkdir -p /chaordic-restapi/static_files
 RUN mkdir -p /chaordic-restapi/logs
