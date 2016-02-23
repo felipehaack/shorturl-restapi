@@ -10,7 +10,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y git supervisor python-dev 
 
 #GitHub
 RUN mkdir -p /root/.ssh
-ADD chaordic_rsa /root/.ssh/id_rsa
+ADD id_rsa /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
 RUN ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts
 CMD ["echo" , "Host bitbucket.org\n\tStrictHostKeyChecking no\n" , ">>" , "/root/.ssh/config"]

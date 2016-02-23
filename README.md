@@ -1,7 +1,8 @@
 #Environment Variables
 
 ## DATABASE
-    DATABASE_NAME = ''
+
+    DATABASE_NAME = 'chaordic'
 
     DATABASE_USERNAME = ''
 
