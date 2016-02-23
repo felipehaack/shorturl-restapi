@@ -8,13 +8,15 @@ RUN ln -s /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 RUN apt-get update -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y git supervisor python-dev python-pip nginx python3-dev libxml2-dev libxslt1-dev libgeos-dev libncurses5-dev gettext
 
-#GitHub Environment
-gitUsername="${GIT_USERNAME}"
-gitPassword="${GIT_PASSWORD}"
-gitRepository="${GIT_REPOSITORY}"
+#GitHub
+RUN mkdir -p /root/.ssh
+ADD chaordic_rsa /root/.ssh/id_rsa
+RUN chmod 600 /root/.ssh/id_rsa
+RUN ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts
+CMD ["echo" , "Host bitbucket.org\n\tStrictHostKeyChecking no\n" , ">>" , "/root/.ssh/config"]
 
 #Project
-git clone https://$gitUsername:$gitPassword@$gitRepository --progress --verbose
+RUN git clone git@bitbucket.org:felipehaack/chaordic-restapi.git --progress --verbose
 RUN cd chaordic-restapi; pip install -r requirements.txt
 RUN mkdir -p /chaordic-restapi/static_files
 RUN mkdir -p /chaordic-restapi/logs
@@ -26,6 +28,7 @@ ADD gunicorn /chaordic-restapi/gunicorn
 RUN chmod u+x /chaordic-restapi/gunicorn
 
 RUN ["python", "/chaordic-restapi/manage.py", "migrate"]
+
 ADD . /opt/django/
 
 #Nginx
