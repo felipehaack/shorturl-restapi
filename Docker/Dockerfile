@@ -8,8 +8,13 @@ RUN ln -s /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 RUN apt-get update -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y git supervisor python-dev python-pip nginx python3-dev libxml2-dev libxslt1-dev libgeos-dev libncurses5-dev gettext
 
+#GitHub Environment
+gitUsername="${GIT_USERNAME}"
+gitPassword="${GIT_PASSWORD}"
+gitRepository="${GIT_REPOSITORY}"
+
 #Project
-RUN git clone https://"$GIT_USERNAME":"$GIT_PASSWORD"@"$GIT_REPOSITORY" --progress --verbose
+git clone https://$gitUsername:$gitPassword@$gitRepository --progress --verbose
 RUN cd chaordic-restapi; pip install -r requirements.txt
 RUN mkdir -p /chaordic-restapi/static_files
 RUN mkdir -p /chaordic-restapi/logs
