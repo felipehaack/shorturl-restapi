@@ -6,7 +6,7 @@ FROM ubuntu:14.04
 RUN rm -f /etc/localtime
 RUN ln -s /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 RUN apt-get update -y
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y git supervisor python-dev python-pip nginx python3-dev libxml2-dev libxslt1-dev libgeos-dev libncurses5-dev gettext postgresql-server-dev-all
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y git gunicorn supervisor python-dev python-pip nginx python3-dev libxml2-dev libxslt1-dev libgeos-dev libncurses5-dev gettext postgresql-server-dev-all
 
 #GitHub
 RUN mkdir -p /root/.ssh

@@ -2,7 +2,7 @@
 
 cd /chaordic-restapi/
 
-python manage.py collectstatic --noinput
+#python manage.py collectstatic --noinput
 
 echo Starting Gunicorn.
 exec gunicorn config.wsgi:application \
