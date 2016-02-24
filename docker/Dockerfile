@@ -32,12 +32,11 @@ RUN ["python", "/chaordic-restapi/manage.py", "migrate"]
 ADD . /opt/django/
 
 #Nginx
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-RUN rm /etc/nginx/sites-enabled/default
-RUN ln -s /opt/django/django.conf /etc/nginx/sites-enabled/
+#RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+#RUN rm /etc/nginx/sites-enabled/default
+#RUN ln -s /opt/django/django.conf /etc/nginx/sites-enabled/
 RUN ln -s /opt/django/supervisord.conf /etc/supervisor/conf.d/
 
-
-EXPOSE 80
+EXPOSE 8000
 
 CMD ["supervisord"]
