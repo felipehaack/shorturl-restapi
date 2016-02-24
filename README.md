@@ -24,8 +24,11 @@
 11. Clique Next
 12. Agora, adicione as informações para acesso ao Postgres:
 > DATABASE_NAME NOME_DO_DB
+
 > DATABASE_USERNAME USERNAME
+
 > DATABASE_PASSWORD PASSWORD
+
 > DATABASE_HOST ENDPOINT_DO_RDS
 13. Clique Next
 14. Clique Launch
