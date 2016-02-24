@@ -23,10 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '&t1t3ok=-$$r8%36&!o@(@s$(xvlqy=zr_9#-)tyq)7-_1c__v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if 'DATABASE_NAME' in os.environ:
-    DEBUG = False
-else:
-    DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
