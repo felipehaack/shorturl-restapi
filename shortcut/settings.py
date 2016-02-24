@@ -83,14 +83,10 @@ if 'DATABASE_NAME' in os.environ:
     DATABASES = {
         'default': {
             'ENGINE': 'django.contrib.gis.db.backends.postgis',
-            'NAME': 'chaordic',
-            'USER': 'felipehaack',
-            'PASSWORD': '100porquinhos',
-            'HOST': 'postgresql-test.cxxkyiemfjsu.us-west-2.rds.amazonaws.com',
-            #'NAME': os.environ['DATABASE_NAME'],
-            #'USER': os.environ['DATABASE_USERNAME'],
-            #'PASSWORD': os.environ['DATABASE_PASSWORD'],
-            #'HOST': os.environ['DATABASE_HOST'],
+            'NAME': os.environ['DATABASE_NAME'],
+            'USER': os.environ['DATABASE_USERNAME'],
+            'PASSWORD': os.environ['DATABASE_PASSWORD'],
+            'HOST': os.environ['DATABASE_HOST'],
         }
     }
 else:
