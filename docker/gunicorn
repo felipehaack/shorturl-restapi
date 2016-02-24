@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd /chaordic-restapi/
+
+echo Starting Gunicorn.
+
+exec gunicorn shortcut.wsgi:application --name chaordic --bind 0.0.0.0:8000 --workers 3 --log-level=info --log-file=/chaordic-restapi/logs/gunicorn.log --access-logfile=/chaordic-restapi/logs/access.log "$@"
