@@ -54,12 +54,32 @@
     15.2. Clique em Updates and Deployments
     15.3. Altere o valor em Command timeout para 900
     15.4. Clique em Apply
+    15.5. Espere terminar
+    15.6. Novamente no DashBoard, clique em Configuration
+    15.7. Após clique em Software Configuration
+    15.8. E adicione todos os Environments que haviamos adicionado anteriormente
+    15.9. Clique em Apply
 16. Após finalizar, é so copiar o endereço do seu balance em:
     16.1. Acesse EC2 no painel do AWS
     16.2. Clique em Load Balancer
     16.3. Selecione o balancer na nossa instancia
     16.4. Copiei o DNS Name e cole em seu navegador
 17. Utilize a API como quiser
+
+## Ocean Digital - Para brincar
+
+1. Crie um Droplet com a aplicação Docker
+2. Acesse seu droplet
+3. Baixe o arquivo docker.zip e descompacte
+4. Execute: docker build .
+5. Espere terminar
+6. Execute: docker images
+7. Copie o IMAGE ID da image que tem <none> na TAG e REPOSITORY
+6. Execute após: docker run --name shortcut-django-app -p 8000:8000 -d COLE_AQUI
+7. Execute: apt-get install nginx
+8. Execute: cp nginx_master /etc/nginx/sites-enabled/default
+9. Execute: service nginx restart
+10. Copie o IP do seu droplet e abra em um navegador. Agora use a API
 
 ## API - GET POST DELETE
 
