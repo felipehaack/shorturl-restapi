@@ -63,12 +63,14 @@
     16.6. DATABASE_HOST ENDPOINT_DO_RDS
         16.6.1. para o ENDPOINT_DO_RDS, abra uma nova aba no painel do AWS, acesse RDS, clique em Instances, selecione a instance do banco, e copiei o Endpoint SEM A PORTA
     16.7. Clique em Apply
-16. Após finalizar, é so copiar o endereço do seu balance em:
-    16.1. Acesse EC2 no painel do AWS
-    16.2. Clique em Load Balancer
-    16.3. Selecione o balancer na nossa instancia
-    16.4. Copiei o DNS Name e cole em seu navegador
-17. Utilize a API como quiser
+17. Feito isso, ainda no DashBoard, clique no botão Action do lado direito
+18. E clique na opção Restart App Server(s)
+19. Após finalizar, é so copiar o endereço do seu balance em:
+    19.1. Acesse EC2 no painel do AWS
+    19.2. Clique em Load Balancer
+    19.3. Selecione o balancer na nossa instancia
+    19.4. Copiei o DNS Name e cole em seu navegador
+20. Só utilizar a API
 
 ## Ocean Digital - Para brincar
 
