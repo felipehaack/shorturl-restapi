@@ -79,21 +79,20 @@ PATH_URL_SHORT = "/api/url/"
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-#if 'DATABASE_NAME' in os.environ:
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        #'NAME': 'shortcutdb',
-        #'USER': 'chaordicusername',
-        #'PASSWORD': 'chaordicpassword',
-        #'HOST': 'shortcut-instance-1.cxxkyiemfjsu.us-west-2.rds.amazonaws.com',
-        'NAME': os.environ['DATABASE_NAME'],
-        'USER': os.environ['DATABASE_USERNAME'],
-        'PASSWORD': os.environ['DATABASE_PASSWORD'],
-        'HOST': os.environ['DATABASE_HOST'],
+if 'DATABASE_NAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            #'NAME': 'shortcutdb',
+            #'USER': 'chaordicusername',
+            #'PASSWORD': 'chaordicpassword',
+            #'HOST': 'shortcut-instance-1.cxxkyiemfjsu.us-west-2.rds.amazonaws.com',
+            'NAME': os.environ['DATABASE_NAME'],
+            'USER': os.environ['DATABASE_USERNAME'],
+            'PASSWORD': os.environ['DATABASE_PASSWORD'],
+            'HOST': os.environ['DATABASE_HOST'],
+        }
     }
-}
-"""
 else:
     DATABASES = {
         'default': {
@@ -101,7 +100,7 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-"""
+
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
