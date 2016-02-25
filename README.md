@@ -20,13 +20,20 @@
 5. Em Multi-AZ Deployment, selecione No
 6. Em Storage Type, selecione Magnetic (mais barato)
 7. Em Settings:
-    7.1. DB Instance Identifier, coloque shortcut-postgresql (somente exemplo)
+    7.1. DB Instance Identifier, coloque shortcut-instance-1 (somente exemplo)
     7.2. Master Username, coloque chaordicusername (somente exemplo)
     7.3. Master Password, coloque chaordicpassword (somente exemplo)
 8. Selecione o VPC defaul (se quiser pode criar uma)
-9. Em Database Options:
-    9.1. Database Name, coloquei chaordic-db
-10. Clique em Launch DB Instance
+9. VPC Security Group: Selecione default (VPN) (caso não tenha uma) 
+10. Em Database Options:
+    9.1. Database Name, coloque shortcutdb
+11. Clique em Launch DB Instance
+12. Volte a Instance
+13. Selecione a instancia que esta sendo criada
+14. Clique no icone abaixo chamado Details
+15. Procure por Security Groups e clique no link ao lado
+16. Após a nova janela abrir, clique em Inbound no menu abaixo
+17. Clique em Edit e adicione outro All Trafic, mas com Source para Anywhere (isso é somente para agilizar ok?)
 
 ## Configurando com Elastic BeanStalk
 
@@ -40,25 +47,22 @@
 8. Renome o Environment para o nome que achar melhor (meu caso será: shortcutElastic) e clique Next
 9. Clique Next (já temos no RDS e VPC)
 10. Selecione a sua EC2 key criada anteriormente.
-11. Clique Next
-12. Agora, adicione as informações para acesso ao Postgres:
-    12.1. DATABASE_NAME chaordic-db
-    12.2. DATABASE_USERNAME chaordicusername
-    12.3. DATABASE_PASSWORD chaordicpassword
-    12.4. DATABASE_HOST ENDPOINT_DO_RDS
-        12.4.1. para o ENDPOINT_DO_RDS, abra uma nova aba no painel do AWS, acesse RDS, clique em Instances, selecione a instance do banco, e copiei o Endpoint SEM A PORTA
-13. Clique Next
-14. Clique Launch
+11. Clique Next -> Next -> Next -> Launch
 15. Há possibilidade de dar timeout (error)
-    15.1. Se isso acontecer, ainda no painel do Dashboard da sua Environment, acesse no menu Configuration
+    15.1. Se isso acontecer, ainda no painel do Dashboard da sua Environment, acesse no menu do lado esquerdo a opção Configuration
     15.2. Clique em Updates and Deployments
     15.3. Altere o valor em Command timeout para 900
     15.4. Clique em Apply
     15.5. Espere terminar
-    15.6. Novamente no DashBoard, clique em Configuration
-    15.7. Após clique em Software Configuration
-    15.8. E adicione todos os Environments que haviamos adicionado anteriormente
-    15.9. Clique em Apply
+16. Após terminar, ainda no painel de DashBoard, selecione a opção Configuration
+    16.1. Clique em Software Configuration
+    16.2. Agora, adicione as informações para acesso ao Postgres no Environment Properties utilizado pela aplicação:
+    16.3. DATABASE_NAME shortcutdb
+    16.4. DATABASE_USERNAME chaordicusername
+    16.5. DATABASE_PASSWORD chaordicpassword
+    16.6. DATABASE_HOST ENDPOINT_DO_RDS
+        16.6.1. para o ENDPOINT_DO_RDS, abra uma nova aba no painel do AWS, acesse RDS, clique em Instances, selecione a instance do banco, e copiei o Endpoint SEM A PORTA
+    16.7. Clique em Apply
 16. Após finalizar, é so copiar o endereço do seu balance em:
     16.1. Acesse EC2 no painel do AWS
     16.2. Clique em Load Balancer
@@ -74,12 +78,12 @@
 4. Execute: docker build .
 5. Espere terminar
 6. Execute: docker images
-7. Copie o IMAGE ID da image que tem <none> na TAG e REPOSITORY
-6. Execute após: docker run --name shortcut-django-app -p 8000:8000 -d COLE_AQUI
-7. Execute: apt-get install nginx
-8. Execute: cp nginx_master /etc/nginx/sites-enabled/default
-9. Execute: service nginx restart
-10. Copie o IP do seu droplet e abra em um navegador. Agora use a API
+7. Copie o IMAGE ID da image que tem none na TAG e REPOSITORY
+8. Execute após: docker run --name shortcut-django-app -p 8000:8000 -d COLE_AQUI
+9. Execute: apt-get install nginx
+10. Execute: mv nginx_master /etc/nginx/sites-enabled/default
+11. Execute: service nginx restart
+12. Copie o IP do seu droplet e abra em um navegador. Agora use a API
 
 ## API - GET POST DELETE
 
