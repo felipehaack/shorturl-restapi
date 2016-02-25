@@ -83,14 +83,14 @@ PATH_URL_SHORT = "/api/url/"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'shortcutdb',
-        'USER': 'chaordicusername',
-        'PASSWORD': 'chaordicpassword',
-        'HOST': 'shortcut-instance-1.cxxkyiemfjsu.us-west-2.rds.amazonaws.com',
-        #'NAME': os.environ['DATABASE_NAME'],
-        #'USER': os.environ['DATABASE_USERNAME'],
-        #'PASSWORD': os.environ['DATABASE_PASSWORD'],
-        #'HOST': os.environ['DATABASE_HOST'],
+        #'NAME': 'shortcutdb',
+        #'USER': 'chaordicusername',
+        #'PASSWORD': 'chaordicpassword',
+        #'HOST': 'shortcut-instance-1.cxxkyiemfjsu.us-west-2.rds.amazonaws.com',
+        'NAME': os.environ['DATABASE_NAME'],
+        'USER': os.environ['DATABASE_USERNAME'],
+        'PASSWORD': os.environ['DATABASE_PASSWORD'],
+        'HOST': os.environ['DATABASE_HOST'],
     }
 }
 """
