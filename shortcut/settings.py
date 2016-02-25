@@ -82,7 +82,7 @@ PATH_URL_SHORT = "/api/url/"
 if 'DATABASE_NAME' in os.environ:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': os.environ['DATABASE_NAME'],
             'USER': os.environ['DATABASE_USERNAME'],
             'PASSWORD': os.environ['DATABASE_PASSWORD'],
