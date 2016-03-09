@@ -16,7 +16,7 @@ RUN ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts
 CMD ["echo" , "Host bitbucket.org\n\tStrictHostKeyChecking no\n" , ">>" , "/root/.ssh/config"]
 
 #Project
-RUN git clone git@bitbucket.org:felipehaack/chaordic-restapi.git --progress --verbose
+RUN git clone git@bitbucket.org:felipehaack/shorturl-restapi.git --progress --verbose
 RUN cd chaordic-restapi; pip install -r requirements.txt
 RUN mkdir -p /chaordic-restapi/static_files
 RUN mkdir -p /chaordic-restapi/logs
